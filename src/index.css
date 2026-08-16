@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-primary, #fdfbf7);
+    color: var(--text-primary, #1e293b);
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif-heading {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Color Theme Schemes */
+:root, [data-theme="amber"] {
+  --bg-primary: #fdfbf7;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --accent-gold: #d97706;
+  --accent-gold-dark: #b45309;
+  --nav-bg: rgba(255, 253, 248, 0.88);
+}
+
+[data-theme="emerald"] {
+  --bg-primary: #f4f8f5;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --text-primary: #064e3b;
+  --text-secondary: #334155;
+  --accent-gold: #059669;
+  --accent-gold-dark: #047857;
+  --nav-bg: rgba(244, 248, 245, 0.9);
+}
+
+[data-theme="midnight"] {
+  --bg-primary: #0b0f17;
+  --bg-card: rgba(15, 23, 42, 0.88);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-gold: #fbbf24;
+  --accent-gold-dark: #d97706;
+  --nav-bg: rgba(15, 23, 42, 0.9);
+}
+
+/* Custom Design System Utilities */
+.glass-nav {
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(241, 245, 249, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+}
+
+/* Midnight Theme Overrides */
+[data-theme="midnight"] main {
+  background-color: #0b0f17 !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="midnight"] .bg-\[\#fdfbf7\] {
+  background-color: #0b0f17 !important;
+}
+
+[data-theme="midnight"] .bg-white {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  color: #f8fafc !important;
+  border-color: rgba(51, 65, 85, 0.8) !important;
+}
+
+[data-theme="midnight"] .bg-white\/90, [data-theme="midnight"] .bg-white\/80 {
+  background-color: rgba(15, 23, 42, 0.88) !important;
+  border-color: rgba(51, 65, 85, 0.8) !important;
+}
+
+[data-theme="midnight"] .text-slate-900 {
+  color: #f8fafc !important;
+}
+
+[data-theme="midnight"] .text-slate-600, [data-theme="midnight"] .text-slate-700, [data-theme="midnight"] .text-slate-800 {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="midnight"] .bg-slate-50, [data-theme="midnight"] .bg-slate-100 {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(51, 65, 85, 0.8) !important;
+}
+
+/* Emerald Theme Overrides */
+[data-theme="emerald"] main {
+  background-color: #f4f8f5 !important;
+}
+
+[data-theme="emerald"] .bg-\[\#fdfbf7\] {
+  background-color: #f4f8f5 !important;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 45%, #78350f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="midnight"] .gold-gradient-text {
+  background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 45%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="emerald"] .gold-gradient-text {
+  background: linear-gradient(135deg, #059669 0%, #047857 45%, #064e3b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.emerald-gradient-text {
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(251, 191, 36, 0.18) 0%, rgba(16, 185, 129, 0.1) 50%, transparent 75%);
+}
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(241, 245, 249, 0) 0%, rgba(241, 245, 249, 0.8) 50%, rgba(241, 245, 249, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.04); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdfbf7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
